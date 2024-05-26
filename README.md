@@ -20,9 +20,12 @@ Testing:
 Similarly, create .env.testing file for testing. Also, create a new DB for running automated tests. Use this DB name in the DB_DATABASE constant.
 
 
-To run the server:
+To run the server (run the commands in two separate terminal tabs/windows):
     -- php artisan serve
     -- npm run dev
+
+To run the tests:
+    -- php artisan test
 
 
 Details:
