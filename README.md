@@ -2,7 +2,6 @@ Steps:
 Run the following commands:
     -- composer install
     -- npm install
-    -- php artisan migrate
 
 Create .env file in the root of the application. Copy the contents from .env.example to .env and modify the database related constants shown below:
     DB_CONNECTION=mysql
@@ -11,6 +10,10 @@ Create .env file in the root of the application. Copy the contents from .env.exa
     DB_DATABASE=task_management_application    #name of the table
     DB_USERNAME=root
     DB_PASSWORD=root
+
+
+    -- php artisan key:generate
+    -- php artisan migrate
 
 
 Testing:
