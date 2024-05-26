@@ -1,11 +1,16 @@
 <script setup>
 import { computed } from "vue";
-import { usePage } from '@inertiajs/vue3';
+import { usePage, router } from '@inertiajs/vue3';
+// import deleteTaskForm from '@/composables/Tasks/deleteTaskForm';
 
 const tasks = computed(() => usePage().props.tasks)
 
 function addNewTask() {
     alert('clicked');
+}
+
+function deleteTask(taskId) {
+    router.delete(route('tasks.delete', taskId));
 }
 
 const PENDING = 1;
@@ -54,7 +59,7 @@ const COMPLETED = 2;
 
                 <td>
                     <span class="material-icons px-4">edit</span>
-                    <span class="material-icons">delete</span>
+                    <span class="material-icons" @click="deleteTask(task.id)">delete</span>
                 </td>
             </tr>
         </table>

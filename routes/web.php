@@ -20,4 +20,5 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
+    Route::delete('/tasks/{task}', [TaskController::class, 'delete'])->name('tasks.delete');
 });

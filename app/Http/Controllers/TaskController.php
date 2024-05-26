@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use Inertia\Inertia;
-use App\Http\Controllers;
-use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 
 class TaskController extends Controller
 {
@@ -14,5 +13,12 @@ class TaskController extends Controller
         return Inertia::render('Tasks/Index', [
             'tasks' => Task::get(),
         ]);
+    }
+
+    public function delete(Task $task): RedirectResponse
+    {
+        $task->delete();
+
+        return redirect()->route('tasks.index');
     }
 }
