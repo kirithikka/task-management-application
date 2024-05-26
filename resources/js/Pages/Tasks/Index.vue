@@ -1,12 +1,12 @@
 <script setup>
 import { computed } from "vue";
+import { useDateFormat } from '@vueuse/core'
 import { usePage, router } from '@inertiajs/vue3';
-// import deleteTaskForm from '@/composables/Tasks/deleteTaskForm';
 
 const tasks = computed(() => usePage().props.tasks)
 
 function addNewTask() {
-    alert('clicked');
+    router.get(route('tasks.show'));
 }
 
 function deleteTask(taskId) {
@@ -51,7 +51,7 @@ const COMPLETED = 2;
             <tr v-for="task in tasks" :key="task" class="text-center">
                 <td class="py-2">{{ task.title }}</td>
                 <td>{{ task.description }}</td>
-                <td>{{ task.due_date }}</td>
+                <td>{{ useDateFormat(task.due_date, 'DD MMM, YYYY').value }}</td>
                 <td>
                     <span v-if="task.status === PENDING" class="material-icons">close</span>
                     <span v-if="task.status === COMPLETED" class="material-icons">check</span>
